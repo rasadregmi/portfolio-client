@@ -35,7 +35,7 @@ const Contact = () => {
       setErrMsg("Message is required!");
     } else {
       try {
-        const response = await fetch('https://portfolio-server-snowy-ten.vercel.app/api/contact', {
+        const response = await fetch('portfolio-server-snowy-ten.vercel.app/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
