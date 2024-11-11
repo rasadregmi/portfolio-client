@@ -6,6 +6,7 @@ import FooterBottom from "./components/footer/FooterBottom";
 import Navbar from "./components/navbar/Navbar";
 import Projects from "./components/projects/Projects";
 import Resume from "./components/resume/Resume";
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Resume />
         <Contact />
         <FooterBottom />
+        <Analytics />
       </div>
     </div>
   );
