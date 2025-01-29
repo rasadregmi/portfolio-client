@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../layouts/Title';
-import { projectOne, projectTwo, projectThree, projectFour } from "../../assets/index";
+import { projectOne, projectTwo, projectThree, projectFour, projectFive } from "../../assets/index";
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -38,9 +38,15 @@ const Projects = () => {
         />
         <ProjectsCard
           title="Scam Aggregator"
-          des="Currently in development, Scam Aggregator allows users to report scams and features a database to raise fraud awareness. 
-          We are not sharing live access or source code for confidentiality. Developed by Team Aegis."
+          des="Scam Aggregator is a platform where users report scams and fraudulent activities.  By consolidating reports, it builds a database to raise awareness and protect individuals"
           src={projectFour}
+          githubLink="https://github.com/rasadregmi/scam"
+        />
+        <ProjectsCard
+          title="ClassLens"
+          des="ClassLens is an AI-powered tool that analyzes classroom images to assess student attentiveness, helping educators improve engagement."
+          src={projectFive}
+          githubLink="https://github.com/rasadregmi/ClassLens"
         />
       </div>
     </section>
