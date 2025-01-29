@@ -5,7 +5,7 @@ import { SiExpress, SiMongodb } from "react-icons/si";
 
 const LeftBanner = () => {
   const [text] = useTypewriter({
-    words: ["Professional Coder.", "Web Developer.", "Software Engineering Student."],
+    words: ["AI Enthusiast", "Web Developer.", "Software Engineering Student."],
     loop: true,
     typeSpeed: 20,
     deleteSpeed: 10,
