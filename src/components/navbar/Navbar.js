@@ -22,7 +22,7 @@ const Navbar = () => {
             >
               <Link
                 activeClass="active"
-                to={link}
+                to={link} 
                 spy={true}
                 smooth={true}
                 offset={-70}
@@ -45,7 +45,7 @@ const Navbar = () => {
               <div>
                 <img className="w-32" src={logo} alt="logo" />
                 <p className="text-sm text-gray-400 mt-2 italic">
-                  Hi! I'm Rasad, a Software Engineering student who is always passionate about coding. Always up for a chat, or a game. Let's connect and have some fun!
+                  Hi! I'm Rasad Regmi, a Software Engineering student who is always passionate about coding. Always up for a chat, or a game. Let's connect and have some fun!
                 </p>
               </div>
               <ul className="flex flex-col gap-4">
