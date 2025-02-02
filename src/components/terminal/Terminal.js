@@ -9,17 +9,17 @@ function Terminal({ onNavigate, onClose }) {
   const inputRef = useRef(null);
   const terminalRef = useRef(null);
 
-  // Define sections for navigation
+  // Sections mapping to your navLinksdata
   const sections = {
-    home: 'Home',
-    overview: 'Overview',
-    projects: 'Projects',
-    resume: 'Resume',
-    contact: 'Contact',
+    home: { name: 'Home', path: '~' },
+    overview: { name: 'Overview', path: '~/overview' },
+    projects: { name: 'Projects', path: '~/projects' },
+    resume: { name: 'Resume', path: '~/resume' },
+    contact: { name: 'Contact', path: '~/contact' },
   };
 
   const getTimestamp = () => {
-    return new Date().toLocaleTimeString('en-US', { 
+    return new Date().toLocaleTimeString('en-US', {
       hour12: false,
       hour: '2-digit',
       minute: '2-digit',
@@ -30,7 +30,7 @@ function Terminal({ onNavigate, onClose }) {
   const handleCommand = (input) => {
     const args = input.trim().split(' ');
     const command = args[0].toLowerCase();
-    
+
     let output = '';
     let isError = false;
 
@@ -47,8 +47,8 @@ function Terminal({ onNavigate, onClose }) {
                 { cmd: 'clear', desc: 'Clear terminal' },
                 { cmd: 'help', desc: 'Show this help message' },
               ].map((item, i) => (
-                <div 
-                  key={i} 
+                <div
+                  key={i}
                   className="flex items-start space-x-4 hover:bg-gray-700/30 p-2 rounded transition-colors command-item"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
@@ -65,7 +65,7 @@ function Terminal({ onNavigate, onClose }) {
         output = (
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 pt-2">
             {Object.keys(sections).map((key, i) => (
-              <div 
+              <div
                 key={i}
                 className="flex items-center space-x-2 p-2 bg-gray-700/20 rounded hover:bg-gray-700/30 transition-colors directory-item"
                 style={{ animationDelay: `${i * 0.1}s` }}
@@ -87,21 +87,28 @@ function Terminal({ onNavigate, onClose }) {
         break;
 
       case 'cd':
-        const newPath = args[1]?.toLowerCase();
-        if (newPath && sections[newPath]) {
-          setCurrentPath(`~/${newPath}`);
+        const target = args[1]?.toLowerCase();
+        if (target === '~' || target === 'home') {
+          setCurrentPath('~');
           output = (
             <div className="text-green-400 mt-2 typing-effect">
-              Changed directory to {sections[newPath]}
+              Changed directory to Home
             </div>
           );
-          if (onNavigate) {
-            onNavigate(sections[newPath]); // Navigate to the corresponding page
-          }
+          if (onNavigate) onNavigate('home');
+        }
+        else if (target && sections[target]) {
+          setCurrentPath(sections[target].path);
+          output = (
+            <div className="text-green-400 mt-2 typing-effect">
+              Changed directory to {sections[target].name}
+            </div>
+          );
+          if (onNavigate) onNavigate(target);
         } else {
           output = (
             <div className="text-red-400 mt-2 typing-effect">
-              Section not found: {newPath}
+              Section not found: {target}
             </div>
           );
           isError = true;
@@ -122,9 +129,9 @@ function Terminal({ onNavigate, onClose }) {
         isError = true;
     }
 
-    setCommands(prev => [...prev, { 
-      input, 
-      output, 
+    setCommands(prev => [...prev, {
+      input,
+      output,
       isError,
       timestamp: getTimestamp()
     }]);
@@ -147,6 +154,7 @@ function Terminal({ onNavigate, onClose }) {
   useEffect(() => {
     handleCommand('help');
   }, []);
+
 
   return (
     <div className="w-full h-full bg-gray-800/90 backdrop-blur-sm rounded-lg overflow-hidden shadow-2xl border border-gray-700/50 flex flex-col">
@@ -172,7 +180,7 @@ function Terminal({ onNavigate, onClose }) {
       </div>
 
       {/* Terminal Body */}
-      <div 
+      <div
         ref={terminalRef}
         className="flex-1 p-4 font-mono text-sm overflow-y-auto custom-scrollbar"
       >
@@ -183,7 +191,7 @@ function Terminal({ onNavigate, onClose }) {
             <div className="text-xs text-gray-500">System v1.0.0</div>
           </div>
         )}
-        
+
         {commands.map((cmd, i) => (
           <div key={i} className="command-block mb-4 group animate-slide-up">
             <div className="flex items-center gap-2 text-sm command-prompt">
