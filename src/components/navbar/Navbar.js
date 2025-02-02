@@ -12,7 +12,6 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTerminal, setShowTerminal] = useState(false);
 
-  // Function to handle navigation from terminal commands
   const handleTerminalNavigation = (path) => {
     const section = path.replace('~/', '');
     const target = navLinksdata.find(link => link.title.toLowerCase() === section);
@@ -22,13 +21,12 @@ const Navbar = () => {
         smooth: true,
         offset: -70,
       });
-      setShowTerminal(false); // Close terminal after navigation
+      setShowTerminal(false); 
     }
   };
 
   return (
     <>
-      {/* Terminal Overlay */}
       {showTerminal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <div className="w-full max-w-4xl h-[80vh] max-h-[600px]">
@@ -40,9 +38,7 @@ const Navbar = () => {
         </div>
       )}
 
-      {/* Navbar */}
       <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-gray-600">
-        {/* Terminal Icon */}
         <div className='font-bold ml-4'>
           <button
             onClick={() => setShowTerminal(!showTerminal)}
@@ -52,7 +48,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Rest of the Navbar */}
         <div>
           <ul className="hidden mdl:inline-flex items-center gap-6 lg:gap-10">
             {navLinksdata.map(({ _id, title, link }) => (
