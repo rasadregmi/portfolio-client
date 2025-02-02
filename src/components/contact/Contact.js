@@ -11,13 +11,11 @@ const Contact = () => {
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
 
-  // ========== Email Validation start here ==============
   const emailValidation = () => {
     return String(email)
       .toLocaleLowerCase()
       .match(/^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/);
   };
-  // ========== Email Validation end here ================
 
   const handleSend = async (e) => {
     e.preventDefault();
