@@ -189,14 +189,13 @@ function Terminal({ onNavigate, onClose }) {
         className="flex-1 p-4 font-mono text-sm overflow-y-auto custom-scrollbar"
       >
         {showWelcome && (
-          <div className="welcome-message mb-4 p-4 bg-gray-700/20 rounded-lg animate-fade-in">
+          <div className="welcome-message mb-4 p-4 text-center bg-gray-700/20 rounded-lg animate-fade-in">
             <h1 className="text-lg font-bold text-green-400 mb-2 typing-effect">
-              Welcome to Terminal
+              Welcome to Rasad's Terminal!
             </h1>
             <p className="text-gray-400 mb-2">
               Type 'help' to see available commands
             </p>
-            <div className="text-xs text-gray-500">System v1.0.0</div>
           </div>
         )}
 
