@@ -21,7 +21,7 @@ const Navbar = () => {
         smooth: true,
         offset: -70,
       });
-      setShowTerminal(false); 
+      setShowTerminal(false);
     }
   };
 
@@ -30,21 +30,21 @@ const Navbar = () => {
       {showTerminal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
           <div className="w-full max-w-4xl h-[80vh] max-h-[600px]">
-            <Terminal 
+            <Terminal
               onNavigate={handleTerminalNavigation}
               onClose={() => setShowTerminal(false)}
             />
           </div>
         </div>
       )}
-
       <div className="w-full h-24 sticky top-0 z-50 bg-bodyColor mx-auto flex justify-between items-center font-titleFont border-b-[1px] border-b-gray-600">
-        <div className='font-bold ml-4'>
+        <div className="font-bold ml-4">
           <button
             onClick={() => setShowTerminal(!showTerminal)}
-            className="text-designColor hover:text-designColor/80 transition-colors"
+            className="flex items-center gap-2 text-teal-400 hover:text-teal-300 transition-colors"
           >
             <TerminalIcon size={28} />
+            <span className="text-sm">Open Terminal</span>
           </button>
         </div>
 
