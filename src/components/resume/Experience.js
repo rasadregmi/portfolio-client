@@ -19,7 +19,7 @@ const Experience = () => {
           Additionally, I contributed to <strong>ClassLens</strong>, an AI-powered classroom attentiveness monitoring system that analyzes student engagement using <strong>machine learning</strong>, and <strong>Traffic Dai</strong>, a real-time <strong>traffic-based travel assistant</strong> optimized for Nepal’s unique road conditions. These experiences have strengthened my <strong>problem-solving abilities, teamwork, and proficiency</strong> in <strong>Python, Java, C++, and ML frameworks (TensorFlow, Scikit-learn)</strong>.
         </p>
       </div>
-    </motion.div>
+    </motion.div> 
   );
 };
 
