@@ -18,9 +18,6 @@ const ContactLeft = () => {
           Hi! I'm Rasad, a Software Engineering student who is always passionate about coding. Always up for a chat, or a game. Let's connect and have some fun!
         </p>
         <p className="text-base text-gray-400 flex items-center gap-2">
-          Phone: <span className="text-lightText">+977-9803319686</span>
-        </p>
-        <p className="text-base text-gray-400 flex items-center gap-2">
           Email: <span className="text-lightText">regmirasad53@gmail.com</span>
         </p>
       </div>
