@@ -1,84 +1,88 @@
 import React from 'react'
 import { motion } from 'framer-motion';
+import { FaCode, FaServer, FaRobot, FaLaptopCode } from 'react-icons/fa';
+
+const SkillCategory = ({ title, skills, icon }) => {
+  return (
+    <div className="bg-black bg-opacity-20 p-6 rounded-lg hover:bg-opacity-30 transition-all duration-300 shadow-shadowOne h-full">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-black bg-opacity-25">
+          <span className="text-green-500 text-2xl">{icon}</span>
+        </div>
+        <h3 className="text-xl font-bold text-white">{title}</h3>
+      </div>
+      <ul className="flex flex-col gap-4">
+        {skills.map((skill, index) => (
+          <li key={index} className="text-sm text-gray-300 leading-relaxed flex items-start">
+            <span className="text-green-500 mr-2 mt-0.5">•</span>
+            <span>{skill}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Skills = () => {
+  const skillCategories = [
+    {
+      title: "Web Development",
+      icon: <FaCode />,
+      skills: [
+        "Full-stack applications using MERN stack and Next.js",
+        "RESTful APIs with Node.js and Express.js",
+        "Responsive design using HTML, CSS, and JavaScript"
+      ]
+    },
+    {
+      title: "Backend & Database",
+      icon: <FaServer />,
+      skills: [
+        "MySQL and MongoDB database management",
+        "Sequelize ORM for structured data operations",
+        "Docker for containerization and deployment"
+      ]
+    },
+    {
+      title: "Machine Learning & AI",
+      icon: <FaRobot />,
+      skills: [
+        "Python libraries: Pandas, NumPy, TensorFlow, Scikit-learn",
+        "Applying ML models to real-world use cases"
+      ]
+    },
+    {
+      title: "Programming Languages",
+      icon: <FaLaptopCode />,
+      skills: [
+        "Python, Java, C, C++",
+        "Git and GitHub for version control and collaboration"
+      ]
+    }
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
-      className="w-full flex flex-col lgl:flex-row gap-10 lgl:gap-20"
+      className="w-full"
     >
-      <div className="w-full lgl:w-1/2">
-        <div className="py-12 font-titleFont flex flex-col gap-4">
-          <h2 className="text-3xl md:text-4xl font-bold">Development Skills</h2>
-        </div>
-        <div className="flex flex-col gap-6">
-          <div className="overflow-x-hidden">
-            <p className="text-sm uppercase font-medium">Problem Solving</p>
-            <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
-              <motion.span
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-full h-full bg-gradient-to-r from-green-600 to-emerald-700 rounded-md relative"
-              >
-                <span className="absolute -top-7 right-0">100%</span>
-              </motion.span>
-            </span>
-          </div>
-          <div className="overflow-x-hidden">
-            <p className="text-sm uppercase font-medium">DSA</p>
-            <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
-              <motion.span
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-[90%] h-full bg-gradient-to-r from-green-600 to-emerald-700 rounded-md relative"
-              >
-                <span className="absolute -top-7 right-0">90%</span>
-              </motion.span>
-            </span>
-          </div>
-          <div className="overflow-x-hidden">
-            <p className="text-sm uppercase font-medium">Next.js</p>
-            <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
-              <motion.span
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-[80%] h-full bg-gradient-to-r from-green-600 to-emerald-700 rounded-md relative"
-              >
-                <span className="absolute -top-7 right-0">80%</span>
-              </motion.span>
-            </span>
-          </div>
-          <div className="overflow-x-hidden">
-            <p className="text-sm uppercase font-medium">MERN</p>
-            <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
-              <motion.span
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-[75%] h-full bg-gradient-to-r from-green-600 to-emerald-700 rounded-md relative"
-              >
-                <span className="absolute -top-7 right-0">75%</span>
-              </motion.span>
-            </span>
-          </div>
-          <div className="overflow-x-hidden">
-            <p className="text-sm uppercase font-medium">Java</p>
-            <span className="w-full h-2 bgOpacity rounded-md inline-flex mt-2">
-              <motion.span
-                initial={{ x: "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="w-[90%] h-full bg-gradient-to-r from-green-600 to-emerald-700 rounded-md relative"
-              >
-                <span className="absolute -top-7 right-0">90%</span>
-              </motion.span>
-            </span>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-8 pt-10">
+        {skillCategories.map((category, index) => (
+          <motion.div
+            key={index}
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            className={index === 4 ? "lg:col-span-3 md:col-span-2" : ""}
+          >
+            <SkillCategory 
+              title={category.title} 
+              skills={category.skills} 
+              icon={category.icon}
+            />
+          </motion.div>
+        ))}
       </div>
     </motion.div>
   );
