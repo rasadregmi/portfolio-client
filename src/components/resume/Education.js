@@ -2,6 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import ResumeCard from "./ResumeCard";
 
+// Import the logo images
+import ncitLogo from "../../assets/images/education/ncitcollege_logo.jpeg";
+import trinityLogo from "../../assets/images/education/trinity_logo.jpg";
+import nobelLogo from "../../assets/images/education/nobel_logo.png";
+
 const Education = () => {
   return (
     <motion.div
@@ -16,16 +21,19 @@ const Education = () => {
             title="B.E. in Software Engineering"
             subTitle="NCIT (2022 - Present)"
             des="Skills: Java · JavaScript · Cascading Style Sheets (CSS) · HTML · C++ · C (Programming Language) · DSA"
+            logo={ncitLogo}
           />
           <ResumeCard
             title="+2"
             subTitle="Trinity International College (2020 - 2022)"
             des="Skills: C (Programming Language)"
+            logo={trinityLogo}
           />
           <ResumeCard
             title="SEE"
             subTitle="Nobel Academy (2010 - 2020)"
             result="5.00/5"
+            logo={nobelLogo}
           />
         </div>
       </div>
