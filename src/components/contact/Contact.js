@@ -10,6 +10,9 @@ const Contact = () => {
   const [message, setMessage] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const FORM_ENDPOINT = process.env.REACT_APP_FORMSPREE_ENDPOINT;
 
   const emailValidation = () => {
     return String(email)
@@ -33,22 +36,24 @@ const Contact = () => {
       setErrMsg("Message is required!");
     } else {
       try {
-        const response = await fetch('https://portfolio-server-snowy-ten.vercel.app/api/contact', {
+        setIsSubmitting(true);
+        const response = await fetch(FORM_ENDPOINT, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'Accept': 'application/json',
           },
           body: JSON.stringify({
-            username,
-            phoneNumber,
+            name: username,
+            phone: phoneNumber,
             email,
             subject,
             message,
           }),
         });
-  
+
         if (response.ok) {
-          setSuccessMsg(`Thank you dear ${username}, Your message has been sent successfully!`);
+          setSuccessMsg(`Thank you ${username}, your message was sent.`);
           setErrMsg("");
           setUsername("");
           setPhoneNumber("");
@@ -56,10 +61,18 @@ const Contact = () => {
           setSubject("");
           setMessage("");
         } else {
-          setErrMsg("Something went wrong. Please try again.");
+          let errText = 'Something went wrong. Please try again.';
+          try {
+            const data = await response.json();
+            if (data && data.error) errText = data.error;
+          } catch (e) {
+          }
+          setErrMsg(errText);
         }
       } catch (error) {
         setErrMsg("There was a problem connecting to the server.");
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -162,9 +175,10 @@ const Contact = () => {
               <div className="w-full">
                 <button
                   onClick={handleSend}
-                  className="w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent"
+                  disabled={isSubmitting}
+                  className={`w-full h-12 bg-[#141518] rounded-lg text-base text-gray-400 tracking-wider uppercase hover:text-white duration-300 hover:border-[1px] hover:border-designColor border-transparent ${isSubmitting ? 'opacity-60 cursor-not-allowed' : ''}`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </div>
               {errMsg && (
