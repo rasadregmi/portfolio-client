@@ -24,10 +24,8 @@ const Contact = () => {
     e.preventDefault();
     if (!FORM_ENDPOINT) {
       setErrMsg("Contact form is not configured. Please set REACT_APP_FORMSPREE_ENDPOINT in your environment.");
-      console.warn('REACT_APP_FORMSPREE_ENDPOINT is not defined. Contact form submission blocked.');
       return;
     }
-    console.log('Contact submit — FORM_ENDPOINT:', FORM_ENDPOINT);
     if (username === "") {
       setErrMsg("Username is required!");
     } else if (phoneNumber === "") {
@@ -61,9 +59,7 @@ const Contact = () => {
         let responseData = null;
         try {
           responseData = await response.json();
-          console.log('Formspree response:', responseData, 'status:', response.status);
         } catch (parseErr) {
-          console.log('Unable to parse Formspree JSON response', parseErr);
         }
 
         if (response.ok) {
