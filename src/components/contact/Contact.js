@@ -22,6 +22,11 @@ const Contact = () => {
 
   const handleSend = async (e) => {
     e.preventDefault();
+    if (!FORM_ENDPOINT) {
+      setErrMsg("Contact form is not configured. Please set REACT_APP_FORMSPREE_ENDPOINT in your environment.");
+      console.warn('REACT_APP_FORMSPREE_ENDPOINT is not defined. Contact form submission blocked.');
+      return;
+    }
     if (username === "") {
       setErrMsg("Username is required!");
     } else if (phoneNumber === "") {
