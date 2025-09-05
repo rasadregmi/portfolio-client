@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import Title from '../layouts/Title';
 import ContactLeft from './ContactLeft';
 
@@ -27,6 +27,7 @@ const Contact = () => {
       console.warn('REACT_APP_FORMSPREE_ENDPOINT is not defined. Contact form submission blocked.');
       return;
     }
+    console.log('Contact submit — FORM_ENDPOINT:', FORM_ENDPOINT);
     if (username === "") {
       setErrMsg("Username is required!");
     } else if (phoneNumber === "") {
@@ -57,6 +58,14 @@ const Contact = () => {
           }),
         });
 
+        let responseData = null;
+        try {
+          responseData = await response.json();
+          console.log('Formspree response:', responseData, 'status:', response.status);
+        } catch (parseErr) {
+          console.log('Unable to parse Formspree JSON response', parseErr);
+        }
+
         if (response.ok) {
           setSuccessMsg(`Thank you ${username}, your message was sent.`);
           setErrMsg("");
@@ -68,7 +77,7 @@ const Contact = () => {
         } else {
           let errText = 'Something went wrong. Please try again.';
           try {
-            const data = await response.json();
+            const data = responseData || await response.json();
             if (data && data.error) errText = data.error;
           } catch (e) {
           }
@@ -81,7 +90,7 @@ const Contact = () => {
       }
     }
   };
-  
+
   return (
     <section
       id="contact"
@@ -113,10 +122,9 @@ const Contact = () => {
                   <input
                     onChange={(e) => setUsername(e.target.value)}
                     value={username}
-                    className={`${
-                      errMsg === "Username is required!" &&
+                    className={`${errMsg === "Username is required!" &&
                       "outline-designColor"
-                    } contactInput`}
+                      } contactInput`}
                     type="text"
                   />
                 </div>
@@ -127,10 +135,9 @@ const Contact = () => {
                   <input
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     value={phoneNumber}
-                    className={`${
-                      errMsg === "Phone number is required!" &&
+                    className={`${errMsg === "Phone number is required!" &&
                       "outline-designColor"
-                    } contactInput`}
+                      } contactInput`}
                     type="text"
                   />
                 </div>
@@ -142,10 +149,9 @@ const Contact = () => {
                 <input
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className={`${
-                    errMsg === "Please give your Email!" &&
+                  className={`${errMsg === "Please give your Email!" &&
                     "outline-designColor"
-                  } contactInput`}
+                    } contactInput`}
                   type="email"
                 />
               </div>
@@ -156,10 +162,9 @@ const Contact = () => {
                 <input
                   onChange={(e) => setSubject(e.target.value)}
                   value={subject}
-                  className={`${
-                    errMsg === "Plese give your Subject!" &&
+                  className={`${errMsg === "Plese give your Subject!" &&
                     "outline-designColor"
-                  } contactInput`}
+                    } contactInput`}
                   type="text"
                 />
               </div>
@@ -170,9 +175,8 @@ const Contact = () => {
                 <textarea
                   onChange={(e) => setMessage(e.target.value)}
                   value={message}
-                  className={`${
-                    errMsg === "Message is required!" && "outline-designColor"
-                  } contactTextArea`}
+                  className={`${errMsg === "Message is required!" && "outline-designColor"
+                    } contactTextArea`}
                   cols="30"
                   rows="8"
                 ></textarea>
