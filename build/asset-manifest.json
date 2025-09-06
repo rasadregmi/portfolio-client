@@ -1,12 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.46149d1a.css",
-    "main.js": "/static/js/main.d7047901.js",
+    "main.js": "/static/js/main.cc4e9742.js",
     "static/media/Rasad2.jpg": "/static/media/Rasad2.b122164cea80466aeee0.jpg",
     "static/media/projectFour.png": "/static/media/projectFour.feacb5773656ae8b35cb.png",
     "static/media/projectFive.png": "/static/media/projectFive.99deab7da65e0a77a7e1.png",
     "static/media/bannerImg.png": "/static/media/bannerImg.3fb7d819e763e90b55e0.png",
     "static/media/projectOne.png": "/static/media/projectOne.1b8613cdce2692e99160.png",
+    "static/media/projectSix.png": "/static/media/projectSix.99cd90128bbd027b0b75.png",
+    "static/media/projectSeven.png": "/static/media/projectSeven.e2f0baa79fa5677d2d1e.png",
     "static/media/trinity_logo.jpg": "/static/media/trinity_logo.b7b1e222783a4466a58a.jpg",
     "static/media/nobel_logo.png": "/static/media/nobel_logo.21493f9c434e1ecdd205.png",
     "static/media/projectThree.png": "/static/media/projectThree.e931fb1009cff4a67c90.png",
@@ -15,10 +17,10 @@
     "static/media/ncitcollege_logo.jpeg": "/static/media/ncitcollege_logo.4f803137960f41305680.jpeg",
     "index.html": "/index.html",
     "main.46149d1a.css.map": "/static/css/main.46149d1a.css.map",
-    "main.d7047901.js.map": "/static/js/main.d7047901.js.map"
+    "main.cc4e9742.js.map": "/static/js/main.cc4e9742.js.map"
   },
   "entrypoints": [
     "static/css/main.46149d1a.css",
-    "static/js/main.d7047901.js"
+    "static/js/main.cc4e9742.js"
   ]
 }

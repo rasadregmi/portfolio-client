@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from '../layouts/Title';
-import { projectOne, projectTwo, projectThree, projectFour, projectFive } from "../../assets/index";
+import { projectOne, projectTwo, projectThree, projectFour, projectFive, projectSix, projectSeven } from "../../assets/index";
 import ProjectsCard from './ProjectsCard';
 
 const Projects = () => {
@@ -47,6 +47,19 @@ const Projects = () => {
           des="ClassLens is an AI-powered tool that analyzes classroom images to assess student attentiveness, helping educators improve engagement."
           src={projectFive}
           githubLink="https://github.com/rasadregmi/ClassLens"
+        />
+        <ProjectsCard
+          title="ClassCam (ClassLens 2.0)"
+          des="ClassCam is a real-time system that uses computer vision and deep learning to monitor student attentiveness by detecting behaviors like reading, writing, hand-raising, and focus."
+          src={projectSix}
+          githubLink="https://github.com/rasadregmi/ClassCam"
+        />
+        <ProjectsCard
+          title="RaiseOnChain"
+          des="RaiseOnChain is a decentralized crowdfunding platform that ensures transparency, security, and global access by recording every donation and campaign on-chain."
+          src={projectSeven}
+          githubLink="https://github.com/rasadregmi/RaiseOnChain"
+          liveLink="https://raise-on-chain-h6cd.vercel.app/"
         />
       </div>
     </section>
