@@ -38,7 +38,7 @@ const Skills = () => {
       title: "Backend & Database",
       icon: <FaServer />,
       skills: [
-        "MySQL and MongoDB database management",
+        "MySQL, PostgreSQL and MongoDB database management",
         "Sequelize ORM for structured data operations",
         "Docker for containerization and deployment"
       ]
@@ -49,6 +49,15 @@ const Skills = () => {
       skills: [
         "Python libraries: Pandas, NumPy, TensorFlow, Scikit-learn",
         "Applying ML models to real-world use cases"
+      ]
+    },
+        {
+      title: "Blockchain",
+      icon: <FaCode />,
+      skills: [
+        "Blockchain fundamentals: consensus, cryptography, and decentralization",
+        "Ethereum, Solidity, Smart Contracts, and DApp development",
+        "Off-chain data storage solutions and Web3 integrations"
       ]
     },
     {
@@ -74,7 +83,6 @@ const Skills = () => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={index === 4 ? "lg:col-span-3 md:col-span-2" : ""}
           >
             <SkillCategory 
               title={category.title} 

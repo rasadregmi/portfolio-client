@@ -5,6 +5,7 @@ import ResumeCard from "./ResumeCard";
 // Import the experience logo images
 import yuwasoftLogo from "../../assets/images/experience/yuwasoft_logo.jpeg";
 import ssrcLogo from "../../assets/images/experience/ssrc_logo.jpeg";
+import esatyaLogo from "../../assets/images/experience/esatya_logo.png";
 
 const Experience = () => {
   return (
@@ -22,9 +23,15 @@ const Experience = () => {
             logo={yuwasoftLogo}
           />
           <ResumeCard
+            title="Blockchain Fellow"
+            subTitle="eSatya"
+            des={`Apr 2025 - Aug 2025 \nBlockchain · Cryptography · Ethereum · Solidity · Smart Contracts · Decentralized Applications (DApps) · Off-Chain Data Storage Solutions`}
+            logo={esatyaLogo}
+          />
+          <ResumeCard
             title="Data Science Fellow"
             subTitle="Sunway Student Representative Council · Apprenticeship"
-            des={`Jan 2025 - Present \nData Science · Supervised Learning · Unsupervised Learning · Git · GitHub`}
+            des={`Jan 2025 - Aug 2025 \nData Science · Supervised Learning · Unsupervised Learning · Git · GitHub`}
             logo={ssrcLogo}
           />
         </div>
